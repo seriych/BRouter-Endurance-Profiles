@@ -12,7 +12,6 @@
 # bstart /global
 ---context:global
 assign   iswet                  1 # 0 as default, *) flag for weather conditions
-assign   turnInstructionMode  = 1 # 0=none, 1=auto-choose, 2=locus-style, 3=osmand-style
 assign   cycleroutes_pref       0.5 # also CRP *)  costfactor penalty for not being cycleroute
 assign   MTB_factor             -1.1 # default 0.0, *)
 assign   smallpaved_factor      -0.8 # default 0.0, *)
@@ -32,6 +31,11 @@ assign   StrictNOBicycleaccess          0 # 0 allows but penalizes foot only acc
 assign   valley_nonflat_multiplier = 2.0
 
 assign   allow_default_barrier_restriction  false # If true, default access for barrier=gate is false. see node context
+
+# Turn instructions settings
+assign turnInstructionMode          = 1     # %turnInstructionMode% | Mode for the generated turn instructions | [0=none, 1=auto-choose, 2=locus-style, 3=osmand-style]
+assign turnInstructionCatchingRange = 40    # %turnInstructionCatchingRange% | Within this distance (in m) several turning instructions are combined into one and the turning angles are better approximated to the general direction | number
+assign turnInstructionRoundabouts   = true  # %turnInstructionRoundabouts% | Set to "false" to avoid generating special turning instructions for roundabouts | boolean
 
 # Internal parameters - not intended to be tweaked by end users, unless they know what they are doing.
 
@@ -53,8 +57,10 @@ assign   downhillcostvalue      switch equal hills 1 60   switch equal hills 2 8
 assign   Flat_Penalty         if NoFlatMode then 1.5 else 0.0
 
 assign   validForBikes        1
-assign   processUnusedTags    0 # 1 is old Brouter behaviour, 0 is new Brouter default, more efficient, but ignores tags not used by a profile.
 
+# this prevents suppression of unused tags, so they are visibly in the data tab;
+# also enable it as option in the profile tab
+assign processUnusedTags = true # %processUnusedTags% | Set to true to output unused tags in data tab | boolean
 
 # positive smallpaved factor effect subtracts itself from MTB factor effect
 # on MTB-like OSM way preference and elevation effect attenuation
@@ -170,6 +176,15 @@ assign nosurface or surface= surface=unknown
 assign nosurfacenortracktype and nosurface tracktype=
 assign ishard or ispaved surface=cobblestone|sett|compacted|fine_gravel|gravel|pebblestone
 assign issoft not or nosurface ishard
+
+assign unknown_surface_penalty
+    if nosurface then
+        switch highway=path       3.8
+        switch highway=footway    3.1
+        switch highway=track      2.8
+        switch ismainroad         0.8
+        1.8
+    else 0.0
 
 # bend /wayvariables
 
@@ -357,10 +372,10 @@ assign not_isbike_penalty   if isbike then 0.0
         switch highway=secondary|secondary_link  0.4  0.3 # tertiary|tertiary_link|unclassified
      else if istrack then
         switch highway=footway            3.5   switch or ispaved tracktype=grade1 0.0
-        switch and tracktype= not isunpaved  ( switch highway=path 3.5 1.0 )
+        switch and tracktype= not isunpaved  ( switch highway=path 4.0 1.5 )
         switch tracktype=                 3.0   switch tracktype=grade1           0.2
         switch tracktype=grade2           0.6   switch tracktype=grade3           1.2
-        switch tracktype=grade4           2.0   switch tracktype=grade5           3.0
+        switch tracktype=grade4           2.5   switch tracktype=grade5           3.5
         3.0
      else
         switch    highway=pedestrian 2.0   switch    highway=bridleway  2.0
@@ -371,8 +386,8 @@ assign wet_penalty    if   not iswet    then 0.0 else
     switch surface=cobblestone|sett     1.0     switch ispaved                      0.0
     switch surface=compacted            0.6     switch surface=fine_gravel          0.8
     switch surface=                     switch not istrack 0.5 switch highway=path  2.0 1.0
-    switch surface=grass                switch highway=path  2.5 1.5
-    switch surface=ground|earth|unpaved|sand|dirt|mud   switch highway=path 3.5 2.0
+    switch surface=grass                switch highway=path  3.0 2.0
+    switch surface=ground|earth|unpaved|sand|dirt|mud   switch highway=path 4.0 2.5
     2.0
 
 # bend /HWclass_bfactor_components
@@ -424,7 +439,7 @@ assign trafficpenalty =
 
 # bstart /costfactors
 
-assign penaltymax = max roughness_penalty max tracktype_surface_penalty max wet_penalty trafficpenalty
+assign penaltymax = max roughness_penalty max tracktype_surface_penalty max wet_penalty max unknown_surface_penalty trafficpenalty
 
 assign rawcostfactor ( # can be <1, adjusted to >=1 in final step of calculation of costfactor, uphillcostfactor,downhillcostfactor
   switch and highway= not route=ferry  10000 #only highways unless ferry
