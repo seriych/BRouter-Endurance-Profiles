@@ -27,6 +27,9 @@ The profiles range from "adventure-ready" to "near-roadbike" efficiency:
 
 * Test on familiar tracks: Before planning a trip to an unknown area, test profiles on routes you know well. This will help you understand the logic behind each preset.
 * Safety first: Always review your generated route before heading out and follow local traffic laws. The profiles (especially Express and Direct) may route you along busy roads. Safety and legal compliance are the rider's responsibility.
+## Profile Comparison
+<img width="1380" height="570" alt="profile_comparison_01" src="https://github.com/user-attachments/assets/e37363fe-3778-4500-858c-49eae9093b57" />
+
 ------------------------------
 ## Credits
 These profiles are a modification of Poutnik's excellent work:
