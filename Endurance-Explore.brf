@@ -1,13 +1,14 @@
-# Poutnik's Trekking profile template for Trekking profile variants
-# Version 2.6.* new max cost system
+# Endurance-Line BRouter Profiles (Based on Poutnik's Trekking-Fast-Wet profile)
+# Optimized for All-Road & Endurance Gravel
 #
-# *)  = See also https://github.com/poutnikl/Brouter-profiles/wiki
-# **) = See also https://github.com/poutnikl/Trekking-Poutnik/wiki
+# Current Endurance-Explore profile description:
+# Faster and more road-oriented. Less gravel, but still ready for unpaved roads. Author's daily choice (38mm semi-slicks).
 #
-# Trekking wet weather profile with moderate focus on mainroads, penalizing unpaved roads. Between Trekking and FastBike.
+# Project: https://github.com/seriych/BRouter-Endurance-Profiles
 #
-# Legend above is the placeholder for generated comments of final profiles
-# See the HistoryLog.txt file for file history, the wikis above for verbose comments.
+# Original project wiki & profile:
+# https://github.com/poutnikl/Brouter-profiles/wiki
+# https://github.com/poutnikl/Brouter-profiles/blob/master/BikeProfiles/Trekking-Fast-wet.brf
 
 # bstart /global
 ---context:global
