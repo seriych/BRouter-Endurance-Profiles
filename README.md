@@ -36,14 +36,17 @@ The profiles range from "adventure-ready" to "near-roadbike" efficiency:
 <img width="476" height="408" alt="001" src="https://github.com/user-attachments/assets/0e3054f4-7da5-4134-b8a8-25bc9a901d13" />
 <br />
 <br />
+
 2. Open https://github.com/seriych/BRouter-Endurance-Profiles, click on one of the `.brf` profiles, and copy its entire text.
 <img width="928" height="369" alt="002" src="https://github.com/user-attachments/assets/ac27c8cd-e46b-4a9c-9eee-9939bf27a812" />
 <br />
 <br />
+
 3. Paste the copied text into the cleared **"Profile"** field on bikerouter.de. Click the **"Apply"** button at the bottom, then click the **"Save"** button next to "Load saved...". Enter a custom name for the profile in the pop-up window and click **"OK"**.
 <img width="860" height="591" alt="003" src="https://github.com/user-attachments/assets/1e9dcc74-a636-458d-a1bc-aa707c00e632" />
 <br />
 <br />
+
 4. Now, when building routes in this browser, you will be able to select your saved custom profiles directly from this menu.
 <img width="480" height="653" alt="004" src="https://github.com/user-attachments/assets/71f73b34-3afb-428b-bf50-7438eb81e481" />
 <br />
