@@ -35,7 +35,7 @@ The profiles range from "adventure-ready" to "near-roadbike" efficiency:
 ### Method 1: Automatic (Recommended)
 The easiest way is to use the official Chrome extension. It automatically integrates all Endurance profiles directly into the main routing menu of **bikerouter.de** and **brouter.de**.
 
-1. Install "Endurance Profiles for BRouter (bikerouter" extension from the Chrome Web Store: [https://chromewebstore.google.com/detail/endurance-profiles-for-br/bbmligiclkmlknfnklicbljhjfenhjhp](https://chromewebstore.google.com/detail/endurance-profiles-for-br/bbmligiclkmlknfnklicbljhjfenhjhp).
+1. Install "Endurance Profiles for BRouter (bikerouter)" extension from the Chrome Web Store: [https://chromewebstore.google.com/detail/endurance-profiles-for-br/bbmligiclkmlknfnklicbljhjfenhjhp](https://chromewebstore.google.com/detail/endurance-profiles-for-br/bbmligiclkmlknfnklicbljhjfenhjhp).
 <img width="1018" height="386" alt="006" src="https://github.com/user-attachments/assets/a010d518-4ac8-47f0-b74f-2c1fac4cb280" />
 <br />
 <br />
